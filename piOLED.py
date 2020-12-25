@@ -95,7 +95,8 @@ class OLED():
                            font=self.font, fill=255)
         # Bottom-center
         if alignment is 'bottom_center':
-            self.draw.text((self.width / 2 - msgPxWidth / 2, 0), message,
+            self.draw.text((self.width / 2 - msgPxWidth / 2,
+                           self.height - msgPxHeight), message,
                            font=self.font, fill=255)
         # Bottom-left
         elif alignment is 'bottom_left':
