@@ -107,11 +107,11 @@ class OLED():
                            self.height - msgPxHeight), message,
                            font=self.font, fill=255)
         # Middle-left
-        elif alignment is 'middle-left':
+        elif alignment is 'middle_left':
             self.draw.text((0, self.height / 2 - msgPxHeight / 2), message,
                            font=self.font, fill=255)
         # Middle-right
-        elif alignment is 'middle-right':
+        elif alignment is 'middle_right':
             self.draw.text((self.width - msgPxWidth,
                            self.height / 2 - msgPxHeight / 2), message,
                            font=self.font, fill=255)
@@ -135,6 +135,7 @@ def main():
     screen.align('F', 'middle_left')
     screen.align('G', 'middle_right')
     screen.align('H', 'bottom_center')
+    screen.align('X', 'center')
     screen.update()
 
     # Clear up pins after finishing script
