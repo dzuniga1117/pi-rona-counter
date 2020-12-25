@@ -78,7 +78,8 @@ class OLED():
         # character is 6 *pixels*, so we make the offset multiply by 6)
         if alignment is 'center':
             self.draw.text((self.width / 2 - msgPxWidth / 2,
-                           self.height / 2), message, font=self.font, fill=255)
+                           self.height / 2 - msgPxHeight / 2), message,
+                           font=self.font, fill=255)
 
 
 def main():
