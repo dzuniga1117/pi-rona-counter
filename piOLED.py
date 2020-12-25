@@ -51,7 +51,7 @@ class OLED():
         pass
 
     # Aligns message along a specified place on the display
-    def align(self, message, alignment=default):
+    def align(self, message, alignment):
         pass
 
 
