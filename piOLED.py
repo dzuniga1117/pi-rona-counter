@@ -37,31 +37,11 @@ class OLED():
         # Establish font in order to show text on the display
         self.font = ImageFont.load_default()
 
-    # Displays a default message in order to test class abilities (does not
-    # require a separate update() call)
-    def sampleText(self):
-        self.draw.text((0, 0), 'Hello,\nRaspberry Pi!', font=self.font,
-                       fill=255)
-
-        # Update display
-        self.disp.image(self.image)
-        self.disp.display()
-
-    # Displays message at the given (x, y) coordinate in the display
-    def write(self, message, x, y):
-        # Write to display
-        self.draw.text((x, y), message, font=self.font, fill=255)
-
-        # Update display
-        # self.disp.image(self.image)
-        # self.disp.display()
-
-    # Aligns message along a specified place on the display
-    def align(self, message, alignment):
-        pass
+    # The following methods are utility methods that ensure that items are
+    # displayed smoothly and are updated properly on the OLED display
 
     # Manually clears the screen from anything currently displaying on it by
-    # drawing a blank rectangle
+    # drawing a blank rectangle (requires update(), used for smooth animations)
     def blankScreen(self):
         self.draw.rectangle((0, 0, self.width, self.height), outline=0, fill=0)
 
@@ -72,6 +52,24 @@ class OLED():
         self.disp.image(self.image)
         self.disp.display()
 
+    # Displays a default message in order to test class abilities at (0, 0)
+    def sampleText(self):
+        self.draw.text((0, 0), 'Hello,\nRaspberry Pi!', font=self.font,
+                       fill=255)
+
+    # Note that the following drawing methods require update() call some point
+    # in order to get the OLED display to reflect the changes in the buffer
+    # introduced by these methods on the self.image object
+
+    # Displays a message at the given (x, y) coordinate in the display
+    def write(self, message, x, y):
+        # Write to display
+        self.draw.text((x, y), message, font=self.font, fill=255)
+
+    # Aligns message along a specified place on the display
+    def align(self, message, alignment):
+        pass
+
 
 def main():
     # Initialize OLED object, 'screen'
@@ -80,7 +78,7 @@ def main():
     # Demonstrates scrolling text
     for i in range(0, 40, 2):
         screen.blankScreen()
-        screen.write('lol neat', i, 0)
+        screen.write('ravioli', i, 0)
         screen.update()
 
     # Clear up pins after finishing script
