@@ -37,7 +37,8 @@ class OLED():
         # Establish font in order to show text on the display
         self.font = ImageFont.load_default()
 
-    # Displays a default message in order to test class abilities
+    # Displays a default message in order to test class abilities (does not
+    # require a separate update() call)
     def sampleText(self):
         self.draw.text((0, 0), 'Hello,\nRaspberry Pi!', font=self.font,
                        fill=255)
@@ -64,7 +65,9 @@ class OLED():
     def blankScreen(self):
         self.draw.rectangle((0, 0, self.width, self.height), outline=0, fill=0)
 
-    # Updates the screen's contents
+    # Updates the screen's contents (must be called in order to write changes
+    # to the OLED display--none of the other drawing methods update the screen
+    # unless update() is called)
     def update(self):
         self.disp.image(self.image)
         self.disp.display()
@@ -74,13 +77,11 @@ def main():
     # Initialize OLED object, 'screen'
     screen = OLED()
 
-    for i in range(0, 20):
+    # Demonstrates scrolling text
+    for i in range(0, 40, 2):
         screen.blankScreen()
-        screen.write('lol neat', i, 50)
+        screen.write('lol neat', i, 0)
         screen.update()
-
-    screen.blankScreen()
-    screen.update()
 
     # Clear up pins after finishing script
     GPIO.cleanup()
