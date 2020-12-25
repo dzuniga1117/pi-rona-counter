@@ -71,7 +71,7 @@ class OLED():
         # Obtain dimensions of message in terms of pixels, to keep in line with
         # pixel-centric needs of draw() functions
         msgPxWidth = len(message) * 6
-        msgPxHeight = 7
+        msgPxHeight = 8                 # Accounts for chars like 'p', 'g', etc
 
         # In order for alignment to work, we must consider size of pixels, not
         # just character sizes (using the default font, the width of a
@@ -110,10 +110,10 @@ def main():
     #    screen.write('ravioli', i, 0)
     #    screen.update()
 
-    screen.align('top_right', 'top_left')
+    screen.align('top_left', 'top_left')
     screen.align('top_right', 'top_right')
-    screen.align('bottom_left', 'bottom_left')
-    screen.align('bottom_right', 'bottom_right')
+    screen.align('bot_left', 'bot_left')
+    screen.align('bot_right', 'bot_right')
     screen.update()
 
     # Clear up pins after finishing script
