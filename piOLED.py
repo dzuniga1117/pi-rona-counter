@@ -67,7 +67,7 @@ def main():
     # Display sample text
     screen.sampleText()
 
-    screen.write('lol neat', 40, 40)
+    screen.write('lol neat', 0, 50)
 
     # Clear up pins after finishing script
     GPIO.cleanup()
