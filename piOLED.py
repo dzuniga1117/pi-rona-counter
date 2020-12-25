@@ -59,9 +59,12 @@ class OLED():
     def align(self, message, alignment):
         pass
 
-    # Manually clears the screen from anything currently displaying on it
+    # Manually clears the screen from anything currently displaying on it by
+    # drawing a rectangle
     def clear(self):
-        self.disp.clear()
+        self.draw.rectangle((0, 0, self.width, self.height), outline=0, fill=0)
+
+        self.disp.image(self.image)
         self.disp.display()
 
 
@@ -70,8 +73,8 @@ def main():
     screen = OLED()
 
     for i in range(0, 20):
+        screen.clear()
         screen.write('lol neat', i, 50)
-
 
     # Clear up pins after finishing script
     GPIO.cleanup()
