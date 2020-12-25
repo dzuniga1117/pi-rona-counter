@@ -71,7 +71,7 @@ class OLED():
         # Obtain dimensions of message in terms of pixels, to keep in line with
         # pixel-centric needs of draw() functions
         msgPxWidth = len(message) * 6
-        msgPxHeight = 8                 # Accounts for chars like 'p', 'g', etc
+        msgPxHeight = 10               # Accounts for chars like 'p', 'g', etc.
 
         # In order for alignment to work, we must consider size of pixels, not
         # just character sizes (using the default font, the width of a
