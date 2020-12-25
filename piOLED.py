@@ -66,8 +66,9 @@ class OLED():
         # Write to display
         self.draw.text((x, y), message, font=self.font, fill=255)
 
-    # Aligns message along a specified place on the display
-    def align(self, message, alignment):
+    # Aligns message along a specified place on the display by specifying one
+    # of nine locations on the screen (default behavior is centered)
+    def align(self, message, alignment='center'):
         # Obtain dimensions of message in terms of pixels, to keep in line with
         # pixel-centric needs of draw() functions
         msgPxWidth = len(message) * 6
@@ -116,6 +117,7 @@ class OLED():
             self.draw.text((self.width - msgPxWidth,
                            self.height / 2 - msgPxHeight / 2), message,
                            font=self.font, fill=255)
+        # Edge case where alignment argument is invalid
         else:
             print('Invalid alignment argument detected.')
 
