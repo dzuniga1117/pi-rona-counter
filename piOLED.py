@@ -112,8 +112,8 @@ def main():
 
     screen.align('top_left', 'top_left')
     screen.align('top_right', 'top_right')
-    screen.align('bot_left', 'bot_left')
-    screen.align('bot_right', 'bot_right')
+    screen.align('bot_left', 'bottom_left')
+    screen.align('bot_right', 'bottom_right')
     screen.update()
 
     # Clear up pins after finishing script
