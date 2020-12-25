@@ -49,7 +49,7 @@ class OLED():
     # Displays message at the given (x, y) coordinate in the display
     def write(self, message, x, y):
         # Write to display
-        self.draw.text((x, y), message, font=self.font)
+        self.draw.text((x, y), message, font=self.font, fill=255)
 
         # Update display
         self.disp.image(self.image)
