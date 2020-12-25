@@ -68,11 +68,17 @@ class OLED():
 
     # Aligns message along a specified place on the display
     def align(self, message, alignment):
-        msgSize = len(message)
+        # Obtain dimensions of message in terms of pixels, to keep in line with
+        # pixel-centric needs of draw() functions
+        msgPxWidth = len(message) * 6
+        msgPxHeight = len(message) * 7
 
+        # In order for alignment to work, we must consider size of pixels, not
+        # just character sizes (using the default font, the width of a
+        # character is 6 *pixels*, so we make the offset multiply by 6)
         if alignment is 'center':
-            self.draw.text((self.width / 2 - msgSize / 2, self.height / 2),
-                           message, font=self.font, fill=255)
+            self.draw.text((self.width / 2 - msgPxWidth / 2,
+                           self.height / 2), message, font=self.font, fill=255)
 
 
 def main():
