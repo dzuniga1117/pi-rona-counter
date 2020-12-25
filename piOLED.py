@@ -80,6 +80,9 @@ class OLED():
             self.draw.text((self.width / 2 - msgPxWidth / 2,
                            self.height / 2 - msgPxHeight / 2), message,
                            font=self.font, fill=255)
+        elif alignment is 'top-right':
+            self.draw.text((self.width - msgPxWidth, 0), message,
+                           font=self.font, fill=255)
 
 
 def main():
@@ -87,12 +90,12 @@ def main():
     screen = OLED()
 
     # Demonstrates scrolling text
-    for i in range(0, 40, 2):
-        screen.blankScreen()
-        screen.write('ravioli', i, 0)
-        screen.update()
+    # for i in range(0, 40, 2):
+    #    screen.blankScreen()
+    #    screen.write('ravioli', i, 0)
+    #    screen.update()
 
-    screen.align('Surprise!!', 'center')
+    screen.align('OOeeOO', 'top-right')
     screen.update()
 
     # Clear up pins after finishing script
