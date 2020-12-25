@@ -76,12 +76,27 @@ class OLED():
         # In order for alignment to work, we must consider size of pixels, not
         # just character sizes (using the default font, the width of a
         # character is 6 *pixels*, so we make the offset multiply by 6)
+        #
+        # Center alignment
         if alignment is 'center':
             self.draw.text((self.width / 2 - msgPxWidth / 2,
                            self.height / 2 - msgPxHeight / 2), message,
                            font=self.font, fill=255)
+        # Top-left
+        elif alignment is 'top_left':
+            self.draw.text((0, 0), message, font=self.font, fill=255)
+        # Top-right
         elif alignment is 'top_right':
             self.draw.text((self.width - msgPxWidth, 0), message,
+                           font=self.font, fill=255)
+        # Bottom-left
+        elif alignment is 'bottom_left':
+            self.draw.text((0, self.height - msgPxHeight), message,
+                           font=self.font, fill=255)
+        # Bottom-right
+        elif alignment is 'bottom_right':
+            self.draw.text((self.width - msgPxWidth,
+                           self.height - msgPxHeight), message,
                            font=self.font, fill=255)
 
 
@@ -95,7 +110,10 @@ def main():
     #    screen.write('ravioli', i, 0)
     #    screen.update()
 
-    screen.align('cool boi', 'top_right')
+    screen.align('top_right', 'top_left')
+    screen.align('top_right', 'top_right')
+    screen.align('bottom_left', 'bottom_left')
+    screen.align('bottom_right', 'bottom_right')
     screen.update()
 
     # Clear up pins after finishing script
