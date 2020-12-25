@@ -70,7 +70,6 @@ def main():
     screen = OLED()
 
     for i in range(0, 20):
-        screen.clear()
         screen.write('lol neat', i, 50)
 
 
