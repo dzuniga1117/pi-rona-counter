@@ -60,12 +60,12 @@ class OLED():
         pass
 
     # Manually clears the screen from anything currently displaying on it by
-    # drawing a rectangle
+    # drawing a blank rectangle
     def clear(self):
         self.draw.rectangle((0, 0, self.width, self.height), outline=0, fill=0)
 
-        self.disp.image(self.image)
-        self.disp.display()
+        # self.disp.image(self.image)
+        # self.disp.display()
 
 
 def main():
