@@ -80,7 +80,7 @@ class OLED():
             self.draw.text((self.width / 2 - msgPxWidth / 2,
                            self.height / 2 - msgPxHeight / 2), message,
                            font=self.font, fill=255)
-        elif alignment is 'top-right':
+        elif alignment is 'top_right':
             self.draw.text((self.width - msgPxWidth, 0), message,
                            font=self.font, fill=255)
 
@@ -95,7 +95,7 @@ def main():
     #    screen.write('ravioli', i, 0)
     #    screen.update()
 
-    screen.align('OOeeOO', 'top-right')
+    screen.align('cool boi', 'top_right')
     screen.update()
 
     # Clear up pins after finishing script
