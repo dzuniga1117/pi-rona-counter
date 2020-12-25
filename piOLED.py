@@ -70,8 +70,8 @@ def main():
     screen = OLED()
 
     for i in range(0, 20):
-        screen.write('lol neat', i, 50)
         screen.clear()
+        screen.write('lol neat', i, 50)
 
 
     # Clear up pins after finishing script
