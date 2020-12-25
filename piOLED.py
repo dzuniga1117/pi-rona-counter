@@ -48,7 +48,12 @@ class OLED():
 
     # Displays message at the given (x, y) coordinate in the display
     def write(self, message, x, y):
-        pass
+        # Write to display
+        self.draw.text((x, y), message, font=self.font)
+
+        # Update display
+        self.disp.image(self.image)
+        self.disp.display()
 
     # Aligns message along a specified place on the display
     def align(self, message, alignment):
@@ -56,10 +61,13 @@ class OLED():
 
 
 def main():
+    # Initialize OLED object, 'screen'
     screen = OLED()
 
     # Display sample text
     screen.sampleText()
+
+    screen.write('lol neat', 40, 40)
 
     # Clear up pins after finishing script
     GPIO.cleanup()
