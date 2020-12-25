@@ -68,7 +68,11 @@ class OLED():
 
     # Aligns message along a specified place on the display
     def align(self, message, alignment):
-        pass
+        msgSize = len(message)
+
+        if alignment is 'center':
+            self.draw.text((self.width / 2 - msgSize / 2, self.height / 2),
+                           message, font=self.font, fill=255)
 
 
 def main():
@@ -80,6 +84,9 @@ def main():
         screen.blankScreen()
         screen.write('ravioli', i, 0)
         screen.update()
+
+    screen.align('Surprise!!', 'center')
+    screen.update()
 
     # Clear up pins after finishing script
     GPIO.cleanup()
