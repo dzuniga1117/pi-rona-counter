@@ -117,9 +117,6 @@ class OLED():
             self.draw.text((self.width - msgPxWidth,
                            self.height / 2 - msgPxHeight / 2), message,
                            font=self.font, fill=255)
-        # Edge case where alignment argument is invalid
-        else:
-            print('Invalid alignment argument detected.')
 
 
 def main():
