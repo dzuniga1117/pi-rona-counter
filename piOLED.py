@@ -82,12 +82,20 @@ class OLED():
             self.draw.text((self.width / 2 - msgPxWidth / 2,
                            self.height / 2 - msgPxHeight / 2), message,
                            font=self.font, fill=255)
+        # Top-center (title)
+        if alignment is 'top_center':
+            self.draw.text((self.width / 2 - msgPxWidth / 2, 0), message,
+                           font=self.font, fill=255)
         # Top-left
         elif alignment is 'top_left':
             self.draw.text((0, 0), message, font=self.font, fill=255)
         # Top-right
         elif alignment is 'top_right':
             self.draw.text((self.width - msgPxWidth, 0), message,
+                           font=self.font, fill=255)
+        # Bottom-center
+        if alignment is 'bottom_center':
+            self.draw.text((self.width / 2 - msgPxWidth / 2, 0), message,
                            font=self.font, fill=255)
         # Bottom-left
         elif alignment is 'bottom_left':
@@ -97,6 +105,15 @@ class OLED():
         elif alignment is 'bottom_right':
             self.draw.text((self.width - msgPxWidth,
                            self.height - msgPxHeight), message,
+                           font=self.font, fill=255)
+        # Middle-left
+        elif alignment is 'middle-left':
+            self.draw.text((0, self.height / 2 - msgPxHeight / 2), message,
+                           font=self.font, fill=255)
+        # Middle-right
+        elif alignment is 'middle-right':
+            self.draw.text((self.width - msgPxWidth,
+                           self.height / 2 - msgPxHeight / 2), message,
                            font=self.font, fill=255)
 
 
@@ -110,10 +127,14 @@ def main():
     #    screen.write('ravioli', i, 0)
     #    screen.update()
 
-    screen.align('top_left', 'top_left')
-    screen.align('top_right', 'top_right')
-    screen.align('bot_left', 'bottom_left')
-    screen.align('bot_right', 'bottom_right')
+    screen.align('A', 'top_left')
+    screen.align('B', 'top_right')
+    screen.align('C', 'bottom_left')
+    screen.align('D', 'bottom_right')
+    screen.align('E', 'top_center')
+    screen.align('F', 'middle_left')
+    screen.align('G', 'middle_right')
+    screen.align('H', 'bottom_center')
     screen.update()
 
     # Clear up pins after finishing script
