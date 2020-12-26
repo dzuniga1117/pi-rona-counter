@@ -79,7 +79,7 @@ def main():
     else:
         # We remove the old version of the file to replace with new data
         os.remove(filename)
-        # Update covid data (taken from weather.com)
+        # Update covid data (taken from worldometer.info)
         covid = storeData(filename)
 
         # Prepare OLED display and then broadcast to it
