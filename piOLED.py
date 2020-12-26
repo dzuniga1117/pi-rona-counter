@@ -130,24 +130,21 @@ def main():
     #    screen.update()
 
     # Demonstrates alignment function at different corners of the display
-    # screen.align('A', 'top_left')
-    # screen.align('B', 'top_right')
-    # screen.align('C', 'bottom_left')
-    # screen.align('D', 'bottom_right')
-    # screen.align('E', 'top_center')
-    # screen.align('F', 'middle_left')
-    # screen.align('G', 'middle_right')
-    # screen.align('H', 'bottom_center')
-    # screen.align('X', 'center')
-    # screen.update()
+    #
+    # locations = ['top_left', 'top_center', 'top_right', 'middle_left',
+    #              'center', 'middle_right', 'bottom_left', 'bottom_center',
+    #              'bottom_right']
+    #
+    # for i in locations:
+    #     screen.align('_X_', i)
+    #     screen.update()
 
-    locations = ['top_left', 'top_center', 'top_right', 'middle_left',
-                 'center', 'middle_right', 'bottom_left', 'bottom_center',
-                 'bottom_right']
-
-    for i in locations:
-        screen.align('_X_', i)
-        screen.update()
+    screen.align('Title Text', 'top_center')
+    screen.align('<<', 'middle_left')
+    screen.align('>>', 'middle_right')
+    screen.align('Menu', 'bottom_left')
+    screen.align('Options', 'bottom_right')
+    screen.update()
 
     # Clear up pins after finishing script
     GPIO.cleanup()
