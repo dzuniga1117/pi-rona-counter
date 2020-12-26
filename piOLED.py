@@ -35,7 +35,7 @@ class OLED():
         self.draw = ImageDraw.Draw(self.image)
 
         # Establish font in order to show text on the display
-        self.font = ImageFont.truetype("NotoSans-Regular.ttf", 12)
+        self.font = ImageFont.load_default()
 
     # The following methods are utility methods that ensure that items are
     # displayed smoothly and are updated properly on the OLED display
