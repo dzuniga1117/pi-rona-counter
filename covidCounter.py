@@ -59,7 +59,7 @@ def storeData(filename):
 
     with open(filename, 'r') as f:
         # Grabs the line pertaining to the number of cases
-        rawData = f.read().split('\n')[1].split(',')
+        rawData = f.read().split('\n')[1]
 
         covidData = {'cases': rawData[0]}
 
@@ -91,7 +91,7 @@ def main():
         screen = piOLED.OLED()
 
         screen.align(covid['cases'], 'center')
-
+        print(covid['cases'])
         piOLED.GPIO.cleanup()
 
 
