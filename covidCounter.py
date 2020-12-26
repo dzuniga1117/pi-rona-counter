@@ -66,11 +66,6 @@ def storeData(filename):
         return covidData
 
 
-# Sends info to OLED display
-def broadcast(screen):
-    pass
-
-
 def main():
 
     # Prepares the filename
@@ -90,8 +85,8 @@ def main():
         # Prepare OLED display and then broadcast to it
         screen = piOLED.OLED()
 
-        screen.align(covid['cases'], 'center')
-        print(covid['cases'])
+        screen.align(str(covid['cases']), 'center')
+
         piOLED.GPIO.cleanup()
 
 
