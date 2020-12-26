@@ -85,8 +85,10 @@ def main():
         # Prepare OLED display and then broadcast to it
         screen = piOLED.OLED()
 
+        # Include title, number of cases, and current time
         screen.align('World COVID-19 Cases', 'top_center')
         screen.align(covid['cases'], 'center')
+        screen.align(time.ctime()[11:][:5], 'bottom_center')
         screen.update()
 
         piOLED.GPIO.cleanup()
