@@ -59,9 +59,9 @@ def storeData(filename):
 
     with open(filename, 'r') as f:
         # Grabs the line pertaining to the number of cases
-        rawData = f.read().split('\n')[1]
+        rawData = f.read().split('\n')
 
-        covidData = {'cases': rawData[0]}
+        covidData = {'cases': rawData[1][1:-1]}
 
         return covidData
 
