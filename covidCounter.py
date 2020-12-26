@@ -3,6 +3,10 @@ import scrapy
 # Note that running CrawlerProcess hadndles the Twisted reactor for us rather
 # than us run it manually--we want to use CrawlerRunner
 from scrapy.crawler import CrawlerProcess
+# Imports operating system module
+import os
+# Imports time capabilities
+import time
 # Imports custom screen module from fellow module
 import piOLED
 
@@ -47,15 +51,14 @@ def storeData(filename):
     process = CrawlerProcess(settings={"FEEDS": {
         filename: {"format": "csv"}}, "LOG_ENABLED": False})
 
-    # Sets crawling using WeatherSpider
+    # Sets crawling using CovidSpider
     process.crawl(CovidSpider)
 
     # Script stays at this step until crawling is finished
     process.start()
 
     with open(filename, 'r') as f:
-        # Grabs the line pertaining to the temp, wind speed, and condition
-        # specifically (definitely should clean up)
+        # Grabs the line pertaining to the number of cases
         rawData = f.read().split('\n')[1].split(',')
 
         covidData = {'cases': rawData[0]}
@@ -69,13 +72,27 @@ def broadcast(screen):
 
 
 def main():
-    screen = piOLED.OLED()
 
-    data = storeData()
+    # Prepares the filename
+    filename = 'covid_numbers.csv'
 
-    screen.align(data['cases'], 'center')
+    # Ugly fix to prevent appending data to data file, please change me~
+    if not os.path.isfile(filename):
+        # makes the file if not present
+        f = open(filename, 'w')
+        f.close()
+    else:
+        # We remove the old version of the file to replace with new data
+        os.remove(filename)
+        # Update covid data (taken from weather.com)
+        covid = storeData(filename)
 
-    piOLED.GPIO.cleanup()
+        # Prepare OLED display and then broadcast to it
+        screen = piOLED.OLED()
+
+        screen.align(covid['cases'], 'center')
+
+        piOLED.GPIO.cleanup()
 
 
 if __name__ == '__main__':
